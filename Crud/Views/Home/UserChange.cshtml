@@ -1,0 +1,53 @@
+﻿@page "/Home/UserChange/";
+@using Crud.Models.Class;
+@using Crud.Models.DB;
+@using System.Web;
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Uri _uri = new Uri(TempData["ID"].ToString());
+    string _userID = HttpUtility.ParseQueryString(_uri.Query).Get("userID");
+    Console.WriteLine(_userID);
+    MyDatabase _db = new MyDatabase(/*_config.Build()*/);
+    User _user = _db.Get(int.Parse(_userID));
+    string _birthString = _user.Birth.ToString("yyyy-MM-dd");
+
+}
+
+<form asp-controller="Home" asp-action="Users" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label for="id" class="form-label">ID :</label>
+        <input type="text" name="id" id="id" value="@_user.ID" readonly class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label for="name" class="form-label">Prénom :</label>
+        <input type="text" name="name" id="name" value="@_user.Name" required class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label for="lastname" class="form-label">Nom :</label>
+        <input type="text" name="lastname" id="lastname" value="@_user.LastName" required class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label for="address" class="form-label">Adresse :</label>
+        <input type="text" name="address" id="address" value="@_user.Address" required class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label for="email" class="form-label">Email :</label>
+        <input type="email" name="email" id="email" value="@_user.Email" required class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label for="phone" class="form-label">Téléphone :</label>
+        <input type="tel" name="phone" id="phone" value="@_user.Phone" required class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label for="birth" class="form-label">Date d'anniversaire :</label>
+        <input type="date" name="birth" id="birth" value="@_birthString" class="form-control" />
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </div>
+</form>
+
+

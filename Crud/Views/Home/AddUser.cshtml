@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form asp-controller="Home" asp-action="UserAdd" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label for="name">Prénom :</label>
+        <input type="text" name="name" id="name" placeholder="Prenom" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label for="lastname">Nom :</label>
+        <input type="text" name="lastname" id="lastname" placeholder="Nom" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label for="address">Adresse :</label>
+        <input type="text" name="address" id="address" placeholder="Addresse" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label for="email">Email :</label>
+        <input type="email" name="email" id="email" placeholder="example@example.com" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label for="phone">Téléphone :</label>
+        <input type="tel" name="phone" id="phone" placeholder="0000000000" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label for="birth">Date d'anniversiare :</label>
+        <input type="date" name="birth" id="birth" class="form-control" required />
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </div>
+
+</form>
